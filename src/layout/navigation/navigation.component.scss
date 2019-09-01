@@ -1,0 +1,21 @@
+.shopname {
+    flex-grow: 1.1;
+}
+nav {
+    justify-items: center;
+}
+.department {
+    flex-grow: 2.8;
+    justify-content: center;
+}
+.searchbox {
+    text-align: right;
+}
+.nav-link {
+    font-weight: bolder;
+    color: #c71585;
+}
+.selected-department {
+    text-decoration: underline;
+    font-size: large;
+}

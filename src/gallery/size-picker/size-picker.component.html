@@ -1,0 +1,3 @@
+<div class="d-flex">
+    <span class="badge badge-pill ml-1" (click)="sizeSelected(ndx)" [ngClass]="{'selected': selected === ndx}"  *ngFor="let size of sizes; let ndx = index;">{{size.attribute_value}}</span>
+</div>

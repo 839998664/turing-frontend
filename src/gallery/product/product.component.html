@@ -1,0 +1,12 @@
+<div class="card" >
+  <h5 class="card-title" (click)="gotoProductDetails(product.product_id)">{{product.name}}</h5>
+  <img [src]="BASE_IMG_URL + product.thumbnail" class="mx-auto" width="120px" (click)="gotoProductDetails(product.product_id)">
+  <div class="card-body" (click)="gotoProductDetails(product.product_id)">
+    <span
+      class="card-text">{{product.description.length > 60 ? (product.description.slice(0, product.description.slice(0, 60).lastIndexOf(' ')) + '...'): product.description}}</span>
+
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+  </div>
+</div>

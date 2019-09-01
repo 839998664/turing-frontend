@@ -1,0 +1,71 @@
+<div class="container d-flex">
+  <ul class="list-group">
+    <li class="list-group-item" (click)="changeSelectedTab(0)" [ngClass]="{'active': selectedTab === 0}">Cart</li>
+    <li class="list-group-item" (click)="changeSelectedTab(1)" [ngClass]="{'active': selectedTab === 1}">Shipping</li>
+    <li class="list-group-item" (click)="changeSelectedTab(2)" [ngClass]="{'active': selectedTab === 2}">Payment</li>
+  </ul>
+  <div class="container cart-tab" [style.display]="selectedTab === 0 ? 'block':'none'">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Item Name</th>
+          <th>Attributes</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+          <th>*</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cart; let ndx = index;">
+          <td>{{ndx + 1}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.attributes}}</td>
+          <td>{{item.quantity}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.subtotal}}</td>
+          <td>X</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <div class="grand-total"><span>Grand Total:</span></div>
+          </td>
+          <td>{{getGrandTotal()}}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="container shipping-tab" [style.display]="selectedTab === 1 ? 'block': 'none'">
+
+    <div class="form-row">
+      <label for="shipping">
+        Select Shipping
+      </label>
+      <select id="shipping" class="form-control" #shipping>
+        <option *ngFor="let ship of shippings" [value]="ship.shipping_id">{{ship.shipping_type}}</option>
+      </select>
+      <button class="btn btn-turing" (click)="saveShipping(shipping.value)">Save</button>
+    </div>
+
+  </div>
+  <div class="container payment-tab" [style.display]="selectedTab === 2 ? 'block':'none'">
+
+    <div class="form-row">
+      <label for="card-element">
+        Credit or debit card
+      </label>
+      <div id="card-element">
+        <!-- A Stripe Element will be inserted here. -->
+      </div>
+
+      <!-- Used to display form errors. -->
+      <div id="card-errors" role="alert"></div>
+    </div>
+
+    <button (click)="makePayment()" [disabled]="!shipping_id || !cart_id || !getGrandTotal()" class="btn btn-turing">Submit Payment</button>
+
+  </div>
+</div>

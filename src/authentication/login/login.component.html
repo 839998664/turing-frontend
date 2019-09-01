@@ -1,0 +1,87 @@
+<div class="container d-flex">
+  <span *ngIf="isUserAuthenticated()">Hi {{ customer.name }}</span>  
+  <a href="#" *ngIf="!isUserAuthenticated()" data-toggle="modal" #login data-target="#loginModal">Sign In</a>
+  <span *ngIf="!isUserAuthenticated()">&nbsp;Or&nbsp;</span>
+  <a href="#" *ngIf="!isUserAuthenticated()" data-toggle="modal" data-target="#registerModal">Register</a>
+  <div class="cart dropdown" >
+    <i class="fas fa-cart-arrow-down cart dropdown-toggle" data-toggle="dropdown"></i><span class="cart-text">{{cartCount}}</span>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#loginModal" *ngIf="!isUserAuthenticated()">Login</a>
+      <a class="dropdown-item" href="#" [routerLink]="['/customer']" *ngIf="isUserAuthenticated()">My Profile</a>
+      <a class="dropdown-item" href="#" [routerLink]="['/checkout']" *ngIf="isUserAuthenticated()">Checkout</a>
+      <a class="dropdown-item" href="#" (click)="logout()" *ngIf="isUserAuthenticated()">Logout</a>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="loginModal">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-turing">Sign In</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="loginusername" class="text-turing">Email address</label>
+            <input type="email" class="form-control" #email id="loginusername" placeholder="Email" autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="loginpassword" class="text-turing" >Password</label>
+            <input type="password" class="form-control" #password id="loginpassword" placeholder="Password"
+              autocomplete="current-password">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="remember">
+            <label class="form-check-label text-turing" for="remember">Remember</label>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" data-toggle="modal" data-target="#loginModal" class="btn btn-turing" (click)="login(email.value, password.value)">Sign In</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" id="registerModal">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-turing">Register</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="username" class="text-turing">Full Name</label>
+            <input type="text" class="form-control" id="Name" #name placeholder="Full Name" (input)="null" autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="username" class="text-turing">Email address</label>
+            <input type="email" class="form-control" id="username" #remail placeholder="Email" (input)="null" autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="password" class="text-turing">Password</label>
+            <input type="password" class="form-control" #rpassword id="password" (input)="null" placeholder="Password"
+              autocomplete="new-password">
+          </div>
+          <div class="form-group">
+            <label for="confirmpassword" class="text-turing">Confirm Password</label>
+            <input type="password" class="form-control" #rcpassword id="confirmpassword" (input)="null" placeholder="Confirm Password"
+              autocomplete="new-password">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" [disabled]="((rpassword.value != rcpassword.value) || !rpassword.value || !rcpassword.value || !remail.value || !name.value)" class="btn btn-turing" (click)="register(name.value, remail.value, rpassword.value)">Register</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<nav class="nav navbar-dark bg-dark">
+  <span class="nav-link shopname" href="#">Turing</span>
+  <div class="department d-flex">
+    <a class="nav-link" href="#" *ngFor="let dept of departments" [ngClass]="{'selected-department': selectedDepartment === dept.department_id}"
+      (click)="departmentSelected(dept.department_id)">{{dept.name}}</a>
+
+  </div>
+  <form class="form-inline searchbox">
+    <input class="form-control rounded-pill" type="search" #searchText placeholder="Search" aria-label="Search"
+      (keyup)="keyUp.next($event)">
+  </form>
+</nav>

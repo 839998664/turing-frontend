@@ -1,0 +1,66 @@
+.payment-tab, .cart-tab, .shipping-tab, .address-tab {
+    display: none;
+}
+.active {
+    background-color: #c71585;
+    border: 1px solid black;
+}
+.list-group{    
+    align-self: center;
+
+}
+.d-flex {
+    height: 100%;
+}
+.grand-total {
+    text-align: right;
+    width: 100%;
+}
+:host {
+    width: 100%;
+}
+.btn-turing {
+    background: #c71585;
+    color: whitesmoke;
+    font-weight: bold;
+}
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+ .StripeElement {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+  
+    padding: 10px 12px;
+  
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: white;
+  
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+  }
+  
+  .StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+  }
+  
+  .StripeElement--invalid {
+    border-color: #fa755a;
+  }
+  
+  .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+  }
+  .base {
+    color: '#32325d';
+    font-family: '"Helvetica Neue", Helvetica, sans-serif';
+    font-size: '16px';
+   
+  }
+  .invalid {
+    color: '#fa755a'
+  }

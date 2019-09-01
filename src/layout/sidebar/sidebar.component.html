@@ -1,0 +1,4 @@
+<h4 class="mt-2">Categories</h4>
+<div class="container d-flex mt-2">
+    <a href="#" *ngFor="let category of categories" class="mt-1" [ngClass]="{'selected-category': selectedCategory === category.category_id}" (click)="categorySelected(category.category_id)">{{category.name}}</a>
+</div>

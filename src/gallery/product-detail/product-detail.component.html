@@ -1,0 +1,27 @@
+<div class="container d-flex">
+  <div class="row">
+    <div class="image-box col-4 offset-2">
+      <img [src]="BASE_IMG_URL + product.thumbnail" />
+    </div>
+    <div class="product-details col-4 offset-2">
+      <h3>{{product.name}}</h3>
+      <div class="d-flex">
+        <span class="original-price"
+          [ngClass]="{'discount-available': product.discounted_price > 0 }">${{product.price}}</span>
+        <span class="discounted-price"
+          [style.display]="product.discounted_price > 0 ? 'block': 'none'">${{product.discounted_price}}</span>
+      </div>
+      <span>{{product.description}}</span><br />
+      <div class="container">
+        <div class="row">
+          <app-color-picker class="mt-5" (colorSelected)="colorSelected($event)"></app-color-picker>
+        </div>
+        <div class="row">
+          <app-size-picker class="mt-5" (sizeSelected)="sizeSelected($event)"></app-size-picker>
+        </div>
+      </div>
+      <button class="mt-5 btn btn-turing" [disabled]="!this.color || !this.size" (click)="addToCart(product)">Add to Cart</button>
+    </div>
+  </div>
+
+</div>

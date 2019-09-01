@@ -1,0 +1,14 @@
+<div class="ml-2">
+  Pages: <a href="#" class="ml-3" (click)="previousPage()">&lt;</a> 
+  <a href="#" class="ml-3" (click)="switchToPage(ndx + 1)" [ngClass]="{'current-page': currentPage === ndx + 1}" *ngFor="let page of pages(); let ndx=index;">{{ndx + 1}}</a>
+  <a href="#" class="ml-3" (click)="nextPage()">&gt;</a>
+</div>
+<div class="card-group d-flex">
+  <app-product class="ml-2 mt-2" [product]="product" *ngFor="let product of products"></app-product>
+</div>
+<div class="ml-2">
+  Pages: <a href="#" class="ml-3" (click)="previousPage()">&lt;</a>
+  <a href="#" class="ml-3" (click)="switchToPage(ndx + 1)" [ngClass]="{'current-page': currentPage === ndx + 1}" *ngFor="let page of pages(); let ndx=index;">{{ndx + 1}}</a>
+  <a href="#" class="ml-3" (click)="nextPage()">&gt;</a>
+</div>
+

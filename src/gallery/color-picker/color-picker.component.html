@@ -1,0 +1,3 @@
+<div class="d-flex">
+    <span (click)="colorSelected(ndx)" [style.background-color]="color.attribute_value" class="ml-1 badge badge-pill" [ngClass]="{'selected': selected === ndx}" *ngFor="let color of colors; let ndx = index;">{{color.attribute_value}}</span>
+</div>

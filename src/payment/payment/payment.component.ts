@@ -4,6 +4,7 @@ import { ShippingService } from 'src/services/shipping.service';
 import { TokenService } from 'src/services/token.service';
 import { OrderService } from 'src/services/order.service';
 import { CustomerService } from 'src/services/customer.service';
+import { NavigationService } from 'src/services/navigation.service';
 
 @Component({
   selector: 'app-payment',
@@ -32,9 +33,11 @@ export class PaymentComponent implements OnInit {
     private tokenService: TokenService,
     private orderService: OrderService,
     private customerService: CustomerService,
-    private shippingService: ShippingService) { }
+    private shippingService: ShippingService,
+    private navigationService: NavigationService) { }
 
   ngOnInit() {
+    this.navigationService.changeSidebarVisibility(true);
     this.loadStripe();
     this.cart_id = this.cartService.getCartId();
     this.cartService.cartId.subscribe((response) => {
@@ -112,5 +115,12 @@ export class PaymentComponent implements OnInit {
   }
   saveShipping = (shipping_id) => {
     this.shipping_id = shipping_id;
+  }
+  removeFromCart = (itemId) => {
+    this.cartService.removeFromCart(itemId).subscribe((resp) => {
+      this.cartService.getCart().subscribe((response) => {
+        this.cart = response;
+      })
+    })
   }
 }

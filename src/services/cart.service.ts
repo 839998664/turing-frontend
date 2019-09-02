@@ -38,4 +38,7 @@ export class CartService {
     return this.httpSVC.post(`/shoppingcart/add`,
       { cart_id: this.cart_id, product_id: productId, attributes: attributes });
   }
+  removeFromCart = (itemId) => {
+    return this.httpSVC.delete(`/shoppingcart/removeproduct/${itemId}`);
+  }
 }

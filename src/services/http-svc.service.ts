@@ -17,4 +17,7 @@ export class HttpSvcService {
   put = (url: string, body) => {
     return this.http.put(this.BASE_URL + url, body);
   }
+  delete = (url) => {
+    return this.http.delete(this.BASE_URL + url);
+  }
 }

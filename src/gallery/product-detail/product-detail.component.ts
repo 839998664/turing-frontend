@@ -13,7 +13,7 @@ export class ProductDetailComponent implements OnInit, AfterContentInit{
   ngAfterContentInit(): void {
    
   }
-  product = {};
+  product: any= {};
   productId;
   cartId;
   cart;
@@ -27,7 +27,7 @@ export class ProductDetailComponent implements OnInit, AfterContentInit{
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
-      this.productService.getProductById(params.productId).subscribe((response) => {
+      this.productService.getProductById(params.productId).subscribe((response: any) => {
         this.product = response;
       });
     });
